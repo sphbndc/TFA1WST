@@ -1,0 +1,1 @@
+-- No database is used yet. Account records are provided by static PHP arrays.
