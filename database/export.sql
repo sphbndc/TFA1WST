@@ -1,5 +1,3 @@
--- Import this file after selecting the target database in phpMyAdmin.
-
 CREATE TABLE IF NOT EXISTS customers (
   id INT AUTO_INCREMENT PRIMARY KEY,
   full_name VARCHAR(100) NOT NULL,
