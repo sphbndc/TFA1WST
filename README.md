@@ -1,25 +1,38 @@
 # LabDesk POS
 
-LabDesk POS is a four-page CodeIgniter 4 website for organizing laboratory customer and staff records.
+LabDesk POS is a CodeIgniter 4 website with database-backed customer and user account directories.
 
 ## Pages
 
 - `/` — landing page
 - `/about` — about page
-- `/customers` — customer accounts from a static PHP array
-- `/users` — user accounts from a static PHP array
+- `/customers` — customer records loaded through `CustomerModel`
+- `/users` — user records loaded through `UserModel`
 
-## Run locally
+## Local setup
+
+Requirements: PHP 8.2+, Composer, and MySQL/MariaDB through XAMPP.
+
+1. Start Apache and MySQL in XAMPP.
+2. Create the database and tables by importing `database/export.sql` in phpMyAdmin.
+3. Confirm the database values in `.env`:
+
+```ini
+database.default.hostname = localhost
+database.default.database = labdesk_pos
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
+database.default.port = 3306
+```
+
+4. Install the dependencies and start CodeIgniter:
 
 ```bash
 composer install
 php spark serve
 ```
 
-Open `http://localhost:8080/` in a browser. The application uses CodeIgniter 4, PHP 8.2+, Composer, HTML, and custom CSS.
+Open `http://localhost:8080/` and test `/`, `/about`, `/customers`, and `/users`.
 
-## Hosting
-
-For InfinityFree, set the production `app.baseURL` in `.env`, then upload `app/`, `public/`, `writable/`, `.env`, `.htaccess`, `spark`, and the Composer files into `htdocs`. Run `composer install --no-dev` before hosting if `vendor/` is not included in the upload package.
-
-No database is used yet. Customer and user records are temporary static PHP arrays in their controllers.
+The account pages use CodeIgniter Models and `findAll()` to retrieve records through Query Builder. No raw SQL is used by the controllers.
