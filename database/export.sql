@@ -1,5 +1,4 @@
-CREATE DATABASE IF NOT EXISTS labdesk_pos CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE labdesk_pos;
+-- Import this file after selecting the target database in phpMyAdmin.
 
 CREATE TABLE IF NOT EXISTS customers (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -16,14 +15,14 @@ CREATE TABLE IF NOT EXISTS users (
   created_at DATETIME NOT NULL
 );
 
-INSERT INTO customers (full_name, email, phone, created_at) VALUES
+INSERT IGNORE INTO customers (full_name, email, phone, created_at) VALUES
 ('Mara Santos', 'mara.santos@northstarlab.ph', '0917 555 0142', '2026-09-01 09:00:00'),
 ('Dr. Paolo Reyes', 'paolo.reyes@medcore.ph', '0918 555 0228', '2026-09-02 09:30:00'),
 ('Angela Dela Cruz', 'angela.delacruz@qc-research.edu.ph', '0920 555 0316', '2026-09-03 10:00:00'),
 ('Luis Villanueva', 'luis.villanueva@pacificquality.ph', '0919 555 0477', '2026-09-04 10:30:00'),
 ('Bea Navarro', 'bea.navarro@greenfieldfoods.ph', '0922 555 0589', '2026-09-05 11:00:00');
 
-INSERT INTO users (username, full_name, created_at) VALUES
+INSERT IGNORE INTO users (username, full_name, created_at) VALUES
 ('amartinez', 'Ari Martinez', '2026-09-01 08:30:00'),
 ('jlim', 'Jonah Lim', '2026-09-01 08:45:00'),
 ('rgarcia', 'Rina Garcia', '2026-09-02 09:15:00'),
